@@ -24,7 +24,7 @@
     <script src="https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit"></script>
   </head>
 
-  <body data-controller="modal">
+  <body data-controller="modal" data-action="modalClose@window->modal#close">
     <%= yield %>
     <%= render "shared/modal" %>
   </body>

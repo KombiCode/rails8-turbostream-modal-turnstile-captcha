@@ -24,7 +24,7 @@ class CardsController < ApplicationController
     @card = Card.new(card_params)
   
     respond_to do |format|
-      if verify_turnstyle && @card.save
+      if verify_turnstile && @card.save
         format.html { redirect_to card_url(@card), notice: "Card was successfully created." }
         format.json { render :show, status: :created, location: @card }
         format.turbo_stream

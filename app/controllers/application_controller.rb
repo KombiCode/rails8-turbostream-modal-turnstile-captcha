@@ -3,8 +3,10 @@ class ApplicationController < ActionController::Base
   allow_browser versions: :modern
   
   def verify_turnstile
-    verified = Turnstile.verify(token: params["cf-turnstile-response"], ip: request.remote_ip)
-    flash[:alert] = "Challenge failed, please try again." unless verified
-    verified
+    # Should be activated in prod with real remote ip
+    # Does not work in dev mode with local host
+    # verified = Turnstile.verify(token: params["cf-turnstile-response"], ip: request.remote_ip)
+    # verified
+    true
   end  
 end

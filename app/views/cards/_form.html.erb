@@ -1,0 +1,26 @@
+<%= form_with(model: @card, id: "card-form") do |form| %>
+  <div class="px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
+    <% if @card.errors.any? %>
+      <div class="p-4 border border-red-600">
+        <ul>
+          <% @card.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="form-group">
+      <%= form.label :name %>
+      <%= form.text_field :name %>
+    </div>
+
+  </div>
+  <%= tag.div class: "px-4", data: {controller: :turnstile, turnstile_site_key_value: ENV["TURNSTILE_SITE_KEY"]}%>
+  <div class="px-4 mt-6 rounded-b sm:grid sm:grid-cols-2 sm:gap-3 sm:grid-flow-row-dense">
+    <%= form.button id: "close", class: "w-full sm:col-start-2 bg-blue-600 px-4 py-2 mb-4 text-white rounded-sm hover:bg-blue-700" %>
+    <button data-action="click->modal#close" class="w-full px-4 py-2 mt-3 mb-4 bg-gray-100 rounded-sm sm:mt-0 sm:col-start-1 hover:bg-gray-200">
+      Cancel
+    </button>
+  </div>
+<% end %>

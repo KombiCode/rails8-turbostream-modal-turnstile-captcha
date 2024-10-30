@@ -1,0 +1,11 @@
+<div class="max-w-3xl mx-auto mt-8">
+  <div class="flex items-baseline justify-between mb-6">
+    <h1 class="text-3xl text-gray-900">Cards</h1>
+    <%= link_to 'New Card', new_card_path, class: "text-blue-600", data: { action: "click->modal#open", turbo_stream: "" } %>
+  </div>
+  <div id="card-list" class="flex flex-col items-baseline p-4 space-y-6 rounded shadow-lg">
+    <% @cards.each do |card| %>
+      <%= render "card", card: card %>
+    <% end %>
+  </div>
+</div>
